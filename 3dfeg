@@ -1,0 +1,101 @@
+if game.Players.LocalPlayer.UserId ==  4527779999 then
+  local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))() -- Inorge Me
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))() -- Inorge Me
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))() -- Inorge Me
+
+local Window = Fluent:CreateWindow({ -- Window
+  Title = "Slax Hub V1",
+  TabWidth = 160,
+  Size = UDim2.fromOffset(580, 460),
+  Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+  Theme = "Dark",
+  MinimizeKey = Enum.KeyCode.K -- Used when theres no MinimizeKeybind
+})
+
+
+local Options = Fluent.Options -- options
+
+
+Fluent:Notify({
+  Title = "Slax Hub V1", -- notify
+  Content = "Script Loading ...",
+  SubContent = "Script Loading ..", -- Optional
+  Duration = 5 -- Set to nil to make the notification not disappear
+})
+
+
+-- Fluent provides Lucide Icons, they are optional
+local Tabs = { -- Tabs
+  Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+  Adjustments = Window:AddTab({ Title = "Adjustments", Icon = "palette" }),
+  Settings = Window:AddTab({ Title = "Settings", Icon = "sliders-horizontal" })
+}
+
+
+Window:SelectTab(1)
+
+
+local Section = Tabs.Main:AddSection("Combat")
+
+
+Tabs.Main:AddButton({
+  Title = "Auto Parry", -- auto parry
+  Description = "Auto Parry Script",
+  Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/uiutyrh/bladeball/main/autparr'))()
+  end
+})
+
+
+Tabs.Main:AddButton({
+  Title = "Close Parry (E)", -- Close Parry
+  Description = "Press E to open/close",
+  Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/marmfjjwjw223/DownGroud/main/DOWNGROUND'))()
+  end
+})
+
+
+local Section = Tabs.Main:AddSection("Fps Boost") -- Fps Boost
+
+
+Tabs.Main:AddButton({
+  Title = "Fps Boost",
+  Description = "to get high fps and lower ping",
+  Callback = function()
+      -- Made by RIP#6666
+_G.Settings = {
+  Players = {
+      ["Ignore Me"] = true, -- Ignore your Character
+      ["Ignore Others"] = true -- Ignore other Characters
+  },
+  Meshes = {
+      Destroy = false, -- Destroy Meshes
+      LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+  },
+  Images = {
+      Invisible = true, -- Invisible Images
+      LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
+      Destroy = false, -- Destroy Images
+  },
+  ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+  ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+  ["No Explosions"] = true, -- Makes Explosion's invisible
+  ["No Clothes"] = true, -- Removes Clothing from the game
+  ["Low Water Graphics"] = true, -- Removes Water Quality
+  ["No Shadows"] = true, -- Remove Shadows
+  ["Low Rendering"] = true, -- Lower Rendering
+  ["Low Quality Parts"] = true -- Lower quality parts
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/uiutyrh/fpsboost/main/fpsboost"))()
+  end
+})
+
+
+SaveManager:SetLibrary(Fluent) -- Inorge Me
+InterfaceManager:SetLibrary(Fluent) -- Inorge Me
+SaveManager:LoadAutoloadConfig(Fluent) -- Inorge Me
+InterfaceManager:BuildInterfaceSection(Tabs.Adjustments) -- Inorge Me
+SaveManager:BuildConfigSection(Tabs.Settings) -- Inorge Me
+-- Made By Yousef .
+end
